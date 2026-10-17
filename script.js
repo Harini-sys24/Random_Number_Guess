@@ -3,6 +3,11 @@ const input = document.querySelector("#guess-input");
 const message = document.querySelector("#game-message");
 const attemptCount = document.querySelector("#attempt-count");
 const newGameButton = document.querySelector("#new-game");
+const themeToggle = document.querySelector("#theme-toggle");
+const themeColorMeta = document.querySelector("#theme-color");
+
+const THEME_KEY = "lucky-number-theme";
+const THEME_COLORS = { dark: "#070707", light: "#f6f4ef" };
 
 let secretNumber;
 let attempts;
@@ -54,4 +59,36 @@ form.addEventListener("submit", (event) => {
 });
 
 newGameButton.addEventListener("click", startNewGame);
+
+// ---- Theme (light / dark) ----
+function applyTheme(theme) {
+  const next = theme === "light" ? "light" : "dark";
+  const label = next === "light" ? "Switch to dark theme" : "Switch to light theme";
+
+  document.documentElement.dataset.theme = next;
+  themeToggle.setAttribute("aria-label", label);
+  themeToggle.title = label;
+  themeColorMeta.setAttribute("content", THEME_COLORS[next]);
+}
+
+function readSavedTheme() {
+  try {
+    return localStorage.getItem(THEME_KEY);
+  } catch (error) {
+    return null;
+  }
+}
+
+themeToggle.addEventListener("click", () => {
+  const next = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+  applyTheme(next);
+  try {
+    localStorage.setItem(THEME_KEY, next);
+  } catch (error) {
+    /* storage unavailable — theme still applies for this session */
+  }
+});
+
+applyTheme(readSavedTheme() || document.documentElement.dataset.theme);
+
 startNewGame();

@@ -8,6 +8,8 @@ Open `index.html` in a web browser. No installation, server, or build step is re
 
 Enter a whole number from 1 to 100 and select **Take a guess**. The game counts valid guesses and ends when you find the secret number. Select **New game** to start over with a new number.
 
+Use the **theme button** in the top bar to switch between the dark (black) and light (white) themes. Your choice is remembered on the next visit.
+
 ## Project files
 
 - `index.html` — game structure and controls
