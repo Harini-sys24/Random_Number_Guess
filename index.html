@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2ed">
+  <title>Lucky Number — Guess the number</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Lucky Number home"><span class="brand-mark">?</span> lucky number</a>
+      <span class="top-note"><span class="live-dot"></span> YOUR DAILY DOSE OF LUCK</span>
+    </header>
+
+    <section class="game-card" aria-labelledby="game-title">
+      <div class="card-glow" aria-hidden="true"></div>
+      <div class="eyebrow"><span class="eyebrow-line"></span> A LITTLE GAME OF CHANCE <span class="eyebrow-line"></span></div>
+      <h1 id="game-title">Can you find<br>the <span>lucky number?</span></h1>
+      <p class="intro">I’m thinking of a number between <strong>1 and 100</strong>.<br>Take a guess and see how close you get.</p>
+
+      <div class="number-stage" aria-label="Number range from 1 to 100">
+        <span class="range-label">1</span>
+        <div class="number-track"><span class="track-fill"></span><span class="track-spark" aria-hidden="true">✳</span></div>
+        <span class="range-label">100</span>
+      </div>
+
+      <form id="guess-form" class="guess-form" novalidate>
+        <label for="guess-input">YOUR GUESS</label>
+        <div class="input-row">
+          <input id="guess-input" name="guess" type="number" inputmode="numeric" min="1" max="100" placeholder="e.g. 42" autocomplete="off" required aria-describedby="game-message">
+          <button class="guess-button" type="submit">Take a guess <span aria-hidden="true">↗</span></button>
+        </div>
+      </form>
+
+      <div id="game-message" class="message" role="status" aria-live="polite">Make your first guess to get started.</div>
+
+      <div class="card-footer">
+        <div class="attempts"><span class="attempt-icon" aria-hidden="true">↗</span><span><strong id="attempt-count">0</strong> guesses</span></div>
+        <button id="new-game" class="reset-button" type="button"><span aria-hidden="true">↻</span> New game</button>
+      </div>
+    </section>
+
+    <footer class="page-footer"><span>TRUST YOUR INSTINCTS</span><span class="footer-star" aria-hidden="true">✳</span><span>FOLLOW THE CLUES</span></footer>
+  </main>
+</body>
+</html>
